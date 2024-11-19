@@ -141,8 +141,10 @@ impl<'a> BuiltWheelIndex<'a> {
 
         if cache_info != *pointer.cache_info() {
             debug!(
-                "Cache info mismatch for source distribution: {:?}",
-                source_dist
+                "Cache info mismatch for source distribution: {:?} {:?} {:?}",
+                source_dist,
+                cache_info,
+                pointer.cache_info()
             );
             return Ok(None);
         }
