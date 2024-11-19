@@ -1,3 +1,4 @@
+use tracing::debug;
 use crate::index::cached_wheel::CachedWheel;
 use crate::source::{HttpRevisionPointer, LocalRevisionPointer, HTTP_REVISION, LOCAL_REVISION};
 use crate::Error;
@@ -126,9 +127,12 @@ impl<'a> BuiltWheelIndex<'a> {
             },
         );
 
+        debug!("Looking for wheels in cache shard: {:?}", cache_shard);
+
         // Read the revision from the cache.
         let Some(pointer) = LocalRevisionPointer::read_from(cache_shard.entry(LOCAL_REVISION))?
         else {
+            debug!("No revision pointer found for source distribution: {:?}", source_dist);
             return Ok(None);
         };
 
@@ -136,12 +140,20 @@ impl<'a> BuiltWheelIndex<'a> {
         let cache_info = CacheInfo::from_directory(&source_dist.install_path)?;
 
         if cache_info != *pointer.cache_info() {
+            debug!(
+                "Cache info mismatch for source distribution: {:?}",
+                source_dist
+            );
             return Ok(None);
         }
 
         // Enforce hash-checking by omitting any wheels that don't satisfy the required hashes.
         let revision = pointer.into_revision();
         if !revision.satisfies(self.hasher.get(source_dist)) {
+            debug!(
+                "Hash mismatch for source distribution: {:?}",
+                source_dist
+            );
             return Ok(None);
         }
 
@@ -154,9 +166,15 @@ impl<'a> BuiltWheelIndex<'a> {
             cache_shard.shard(cache_digest(self.build_configuration))
         };
 
-        Ok(self
+        let found = self
             .find(&cache_shard)
-            .map(|wheel| wheel.with_cache_info(cache_info)))
+            .map(|wheel| wheel.with_cache_info(cache_info));
+
+        if found.is_none() {
+            debug!("No compatible wheel found for source distribution: {:?}", source_dist);
+        }
+
+        Ok(found)
     }
 
     /// Return the most compatible [`CachedWheel`] for a given source distribution at a git URL.
