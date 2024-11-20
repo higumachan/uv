@@ -139,15 +139,17 @@ impl<'a> BuiltWheelIndex<'a> {
         // If the distribution is stale, omit it from the index.
         let cache_info = CacheInfo::from_directory(&source_dist.install_path)?;
 
-        if cache_info != *pointer.cache_info() {
-            debug!(
-                "Cache info mismatch for source distribution: {:?} {:?} {:?}",
-                source_dist,
-                cache_info,
-                pointer.cache_info()
-            );
-            return Ok(None);
-        }
+        dbg!(&source_dist, &cache_info, &pointer.cache_info());
+
+        // if cache_info != *pointer.cache_info() {
+        //     debug!(
+        //         "Cache info mismatch for source distribution: {:?} {:?} {:?}",
+        //         source_dist,
+        //         cache_info,
+        //         pointer.cache_info()
+        //     );
+        //     return Ok(None);
+        // }
 
         // Enforce hash-checking by omitting any wheels that don't satisfy the required hashes.
         let revision = pointer.into_revision();
