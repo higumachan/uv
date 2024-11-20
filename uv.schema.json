@@ -433,7 +433,7 @@
       ]
     },
     "sources": {
-      "description": "The sources to use when resolving dependencies.\n\n`tool.uv.sources` enriches the dependency metadata with additional sources, incorporated during development. A dependency source can be a Git repository, a URL, a local path, or an alternative registry.\n\nSee [Dependencies](https://docs.astral.sh/uv/concepts/dependencies/) for more.",
+      "description": "The sources to use when resolving dependencies.\n\n`tool.uv.sources` enriches the dependency metadata with additional sources, incorporated during development. A dependency source can be a Git repository, a URL, a local path, or an alternative registry.\n\nSee [Dependencies](https://docs.astral.sh/uv/concepts/projects/dependencies/) for more.",
       "anyOf": [
         {
           "$ref": "#/definitions/ToolUvSources"
@@ -1788,6 +1788,69 @@
           ]
         },
         {
+          "description": "An `x86_64` target for the `manylinux_2_32` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_32"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_33` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_33"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_34` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_34"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_35` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_35"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_36` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_36"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_37` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_37"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_38` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_38"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_39` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_39"
+          ]
+        },
+        {
+          "description": "An `x86_64` target for the `manylinux_2_40` platform.",
+          "type": "string",
+          "enum": [
+            "x86_64-manylinux_2_40"
+          ]
+        },
+        {
           "description": "An ARM64 target for the `manylinux_2_17` platform.",
           "type": "string",
           "enum": [
@@ -1806,6 +1869,69 @@
           "type": "string",
           "enum": [
             "aarch64-manylinux_2_31"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_32` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_32"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_33` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_33"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_34` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_34"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_35` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_35"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_36` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_36"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_37` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_37"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_38` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_38"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_39` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_39"
+          ]
+        },
+        {
+          "description": "An ARM64 target for the `manylinux_2_40` platform.",
+          "type": "string",
+          "enum": [
+            "aarch64-manylinux_2_40"
           ]
         }
       ]

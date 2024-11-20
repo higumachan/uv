@@ -248,7 +248,7 @@ pub struct ToolUv {
     /// during development. A dependency source can be a Git repository, a URL, a local path, or an
     /// alternative registry.
     ///
-    /// See [Dependencies](../concepts/dependencies.md) for more.
+    /// See [Dependencies](../concepts/projects/dependencies.md) for more.
     #[option(
         default = "{}",
         value_type = "dict",
@@ -1278,7 +1278,7 @@ pub enum SourceError {
     NonUtf8Path(PathBuf),
     #[error("Source markers must be disjoint, but the following markers overlap: `{0}` and `{1}`.\n\n{hint}{colon} replace `{1}` with `{2}`.", hint = "hint".bold().cyan(), colon = ":".bold())]
     OverlappingMarkers(String, String, String),
-    #[error("When multiple sources are provided, each source must include a platform markers (e.g., `marker = \"sys_platform == 'linux'\"`)")]
+    #[error("When multiple sources are provided, each source must include a platform marker (e.g., `marker = \"sys_platform == 'linux'\"`)")]
     MissingMarkers,
     #[error("Must provide at least one source")]
     EmptySources,

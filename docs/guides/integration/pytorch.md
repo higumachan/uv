@@ -5,13 +5,18 @@ development. You can use uv to manage PyTorch projects and PyTorch dependencies 
 Python versions and environments, even controlling for the choice of accelerator (e.g., CPU-only vs.
 CUDA).
 
+!!! note
+
+    Some of the features outlined in this guide require uv version 0.5.3 or later. If you're using an
+    older version of uv, we recommend upgrading prior to configuring PyTorch.
+
 ## Installing PyTorch
 
 From a packaging perspective, PyTorch has a few uncommon characteristics:
 
 - Many PyTorch wheels are hosted on a dedicated index, rather than the Python Package Index (PyPI).
-  As such, installing PyTorch typically often configuring a project to use the PyTorch index.
-- PyTorch includes distinct builds for each accelerator (e.g., CPU-only, CUDA). Since there's no
+  As such, installing PyTorch often requires configuring a project to use the PyTorch index.
+- PyTorch produces distinct builds for each accelerator (e.g., CPU-only, CUDA). Since there's no
   standardized mechanism for specifying these accelerators when publishing or installing, PyTorch
   encodes them in the local version specifier. As such, PyTorch versions will often look like
   `2.5.1+cpu`, `2.5.1+cu121`, etc.
